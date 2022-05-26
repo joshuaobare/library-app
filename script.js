@@ -10,15 +10,15 @@ function Book(name,author,pages,status) {
     }*/
 }
 
-
+/*
 const theHobbit = new Book('The Hobbit','J.R.R. Tolkien',10,"unread")
 const theHobbit2 = new Book('The Hobbit2','J.R.R. Tolkien2',100,"read")
 const theHobbit3 = new Book('The Hobbit3','J.R.R. Tolkien3',12,"read")
 const theHobbit4 = new Book('The Hobbit4','J.R.R. Tolkien4',12,"read")
 const theHobbit5 = new Book('The Hobbit5','J.R.R. Tolkien5',142, "read")
+*/
 
-
-let myLibrary = [theHobbit,theHobbit2,theHobbit3,theHobbit4,theHobbit5]
+let myLibrary = []
 const bookShelf = document.querySelector("#book")
 const bookCards = document.createElement("div")
 bookShelf.appendChild(bookCards)
@@ -38,11 +38,19 @@ function displayBooks() {
     }
 }
 
+let newBook = new Book()
 
 function addBookToLibrary() {
-  
+
+    newBook.name=BookAdder.name.value
+    newBook.author=BookAdder.author.value
+    newBook.pages=BookAdder.pages.value
+    newBook.status=BookAdder.status.value
+
+    myLibrary.push(newBook)
+    console.log(myLibrary)
 }
 
 
-const btn = document.querySelector("#btn")
+const btn = document.querySelector("#submit")
 btn.addEventListener('click', addBookToLibrary)
