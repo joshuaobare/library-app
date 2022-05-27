@@ -35,9 +35,20 @@ function displayBooks() {
             
             }
             this["card"+x].innerHTML += "<br>"
+
             const delButton = document.createElement('button')
             delButton.innerHTML = "Delete Book"
+            delButton.classList.add("delButton")
             this["card"+x].appendChild(delButton)
+
+            delButton.addEventListener('click', () => {
+            this["card"+x].remove();
+            myLibrary.splice(x,1);
+
+
+
+            })
+
             bookCards.appendChild(this["card"+x])
          
     }
@@ -58,9 +69,7 @@ function addBookToLibrary() {
     
 }
 
-function deleteBook() {
 
-}
 
 
 const btn = document.querySelector("#submit")
@@ -76,3 +85,4 @@ addBtn.addEventListener('click', () => {
     const form =document.querySelector(".form")
     form.style.display = "block"
 })
+
