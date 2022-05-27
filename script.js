@@ -35,6 +35,9 @@ function displayBooks() {
             
             }
             this["card"+x].innerHTML += "<br>"
+            const delButton = document.createElement('button')
+            delButton.innerHTML = "Delete Book"
+            this["card"+x].appendChild(delButton)
             bookCards.appendChild(this["card"+x])
          
     }
@@ -53,6 +56,10 @@ function addBookToLibrary() {
     myLibrary.push(newBook)
     console.log(myLibrary)
     
+}
+
+function deleteBook() {
+
 }
 
 
