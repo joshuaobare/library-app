@@ -28,7 +28,7 @@ function displayBooks() {
     bookCards.innerHTML = ""
     for(let x = 0; x < myLibrary.length; x++ ) {
         this["card"+x] = document.createElement('div')
-        
+        this["card"+x].classList.add("bookCard")
             for (let y in myLibrary[x]) {
                 this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
                 

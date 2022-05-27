@@ -5,3 +5,21 @@
 .form {
     display: none;
 }
+
+h1 {
+    text-align: center;
+}
+
+.bookCard {
+    background-color: black;
+    color:wheat;
+    width:100px;
+    height: 100px;
+}
+
+.bookCards {
+    background-color: #ffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:50px;
+}
