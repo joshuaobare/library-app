@@ -21,6 +21,7 @@ const theHobbit5 = new Book('The Hobbit5','J.R.R. Tolkien5',142, "read")
 let myLibrary = []
 const bookShelf = document.querySelector("#book")
 const bookCards = document.createElement("div")
+bookCards.classList.add("bookCards")
 bookShelf.appendChild(bookCards)
 
 function displayBooks() {
@@ -42,12 +43,12 @@ function displayBooks() {
 
 function addBookToLibrary() {
 
-let name = document.getElementById('name').value
-let author = document.getElementById('author').value
-let pages = document.getElementById('pages').value
-let status = document.getElementById('status').value 
+    let name = document.getElementById('name').value
+    let author = document.getElementById('author').value
+    let pages = document.getElementById('pages').value
+    let status = document.getElementById('status').value 
 
-let newBook = new Book(name,author,pages,status)
+    let newBook = new Book(name,author,pages,status)
 
     myLibrary.push(newBook)
     console.log(myLibrary)
@@ -63,4 +64,8 @@ btn.addEventListener('click', function (e) {
 
   }) 
 
-
+const addBtn = document.querySelector("#addBook")
+addBtn.addEventListener('click', () => {
+    const form =document.querySelector(".form")
+    form.style.display = "block"
+})
