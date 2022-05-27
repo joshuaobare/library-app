@@ -24,7 +24,7 @@ const bookCards = document.createElement("div")
 bookShelf.appendChild(bookCards)
 
 function displayBooks() {
-    for(let x=0;x<5;x++) {
+    for(let x = 0; x < 5; x++ ) {
         this["card"+x] = document.createElement('div')
         
             for (let y in myLibrary[x]) {
@@ -38,19 +38,31 @@ function displayBooks() {
     }
 }
 
-let newBook = new Book()
+
+
 
 function addBookToLibrary() {
 
-    newBook.name=BookAdder.name.value
-    newBook.author=BookAdder.author.value
-    newBook.pages=BookAdder.pages.value
-    newBook.status=BookAdder.status.value
+
+
+let name = document.getElementById('name').value
+let author = document.getElementById('author').value
+let pages = document.getElementById('pages').value
+let status = document.getElementById('status').value 
+
+let newBook = new Book(name,author,pages,status)
 
     myLibrary.push(newBook)
     console.log(myLibrary)
+    
 }
 
 
 const btn = document.querySelector("#submit")
-btn.addEventListener('click', addBookToLibrary)
+btn.addEventListener('click', function (e) {
+    addBookToLibrary();
+    e.preventDefault();
+
+  }) 
+
+
