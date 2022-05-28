@@ -5,18 +5,10 @@ function Book(name,author,pages,status) {
     this.Author = author;
     this.Pages = pages;
     this.Status = status;
-   /* this.info = function() {
-        console.log(`${this.name} by ${this.author} is ${this.status}.`)
-    }*/
+   
 }
 
-/*
-const theHobbit = new Book('The Hobbit','J.R.R. Tolkien',10,"unread")
-const theHobbit2 = new Book('The Hobbit2','J.R.R. Tolkien2',100,"read")
-const theHobbit3 = new Book('The Hobbit3','J.R.R. Tolkien3',12,"read")
-const theHobbit4 = new Book('The Hobbit4','J.R.R. Tolkien4',12,"read")
-const theHobbit5 = new Book('The Hobbit5','J.R.R. Tolkien5',142, "read")
-*/
+
 
 let myLibrary = []
 const bookShelf = document.querySelector("#book")
@@ -25,31 +17,45 @@ bookCards.classList.add("bookCards")
 bookShelf.appendChild(bookCards)
 
 function displayBooks() {
-    bookCards.innerHTML = ""
+// the section with the cards is cleared each time the function is run
+    bookCards.innerHTML = ""  
+    
     for(let x = 0; x < myLibrary.length; x++ ) {
-        this["card"+x] = document.createElement('div')
-        this["card"+x].classList.add("bookCard")
+
+    
+        card = document.createElement('div')
+        card.classList.add("bookCard")
+        card.setAttribute("id",x)
             for (let y in myLibrary[x]) {
-                this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+                card.innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
                 
             
             }
-            this["card"+x].innerHTML += "<br>"
+            card.innerHTML += "<br>"
 
             const delButton = document.createElement('button')
             delButton.innerHTML = "Delete Book"
             delButton.classList.add("delButton")
-            this["card"+x].appendChild(delButton)
-
+            card.appendChild(delButton)
+            let click = 0
             delButton.addEventListener('click', () => {
-            this["card"+x].remove();
-            myLibrary.splice(x,1);
+            len = myLibrary.length;
+            cardId = card.id;
 
+            console.log(card)
+            console.log(myLibrary)
+            card.remove();
+            
+            
+            myLibrary.splice(cardId,1);
+            click += 1;
+            
+            
 
 
             })
 
-            bookCards.appendChild(this["card"+x])
+            bookCards.appendChild(card)
          
     }
 }
