@@ -1,5 +1,3 @@
-
-
 function Book(name,author,pages,status) {
     this.Name = name;
     this.Author = author;
@@ -23,39 +21,40 @@ function displayBooks() {
     for(let x = 0; x < myLibrary.length; x++ ) {
 
     
-        card = document.createElement('div')
-        card.classList.add("bookCard")
-        card.setAttribute("id",x)
+        this["card"+x] = document.createElement('div')
+        this["card"+x].classList.add("bookCard")
+// each card has an ID based on its index in the library array upon creation
+
+this["card"+x].setAttribute("id",x)
             for (let y in myLibrary[x]) {
-                card.innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+                this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
                 
             
             }
-            card.innerHTML += "<br>"
+            this["card"+x].innerHTML += "<br>"
+
+// a delete button is added onto each card, and an eventListener is defined
 
             const delButton = document.createElement('button')
             delButton.innerHTML = "Delete Book"
             delButton.classList.add("delButton")
-            card.appendChild(delButton)
-            let click = 0
+            this["card"+x].appendChild(delButton)
+            
             delButton.addEventListener('click', () => {
-            len = myLibrary.length;
-            cardId = card.id;
+            
 
-            console.log(card)
+            console.log(this["card"+x])
             console.log(myLibrary)
-            card.remove();
             
+// when the delete button is clicked the button removes the card div
+this["card"+x].remove();
             
-            myLibrary.splice(cardId,1);
-            click += 1;
-            
-            
-
-
+          
+            myLibrary.splice(this["card"+x].id,1);
+          
             })
 
-            bookCards.appendChild(card)
+            bookCards.appendChild(this["card"+x])
          
     }
 }
