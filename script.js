@@ -25,40 +25,51 @@ function displayBooks() {
         this["card"+x].classList.add("bookCard")
 // each card has an ID based on its index in the library array upon creation
 
-this["card"+x].setAttribute("id",x)
-            for (let y in myLibrary[x]) {
-                this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
-                
+        this["card"+x].setAttribute("id",x)
+        for (let y in myLibrary[x]) {
+            this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
             
-            }
-            this["card"+x].innerHTML += "<br>"
+        
+        }
+        this["card"+x].innerHTML += "<br>"
 
 // a delete button is added onto each card, and an eventListener is defined
 
-            const delButton = document.createElement('button')
-            delButton.innerHTML = "Delete Book"
-            delButton.classList.add("delButton")
-            this["card"+x].appendChild(delButton)
-            
-            delButton.addEventListener('click', () => {
-            
+        const delButton = document.createElement('button')
+        delButton.innerHTML = "Delete Book"
+        delButton.classList.add("delButton")
+        this["card"+x].appendChild(delButton)
+        delButton.addEventListener('click', () => {
+            deleteBook(this["card"+x])
+        })
+        
+        
 
-            console.log(this["card"+x])
-            console.log(myLibrary)
+       // 
+      //  
             
 // when the delete button is clicked the button removes the card div
-this["card"+x].remove();
-            
-          
-            myLibrary.splice(this["card"+x].id,1);
-          
-            })
+        
 
-            bookCards.appendChild(this["card"+x])
+        bookCards.appendChild(this["card"+x])
          
     }
 }
 
+
+        
+        
+        
+        
+        
+
+
+function deleteBook(e) {
+    console.log(e)
+    e.remove();
+    myLibrary.splice(e.id,1);
+    console.log(myLibrary)
+}
 
 function addBookToLibrary() {
 
