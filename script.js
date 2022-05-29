@@ -26,31 +26,13 @@ function displayBooks() {
         
         for (let y in myLibrary[x]) {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
-          /*  if (y === "status") {
-                if (myLibrary[x][y] === "1" ) {
-                    myLibrary[x][y] = "Read"
-                    this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
-                }
-
-                else {
-                    myLibrary[x][y] = "Unread"
-                    this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
-                }
-            } */
-            
-                       
-            
-            
-            
+          
 // each card has an ID based on the book's name
             if (y === "name") {
                 this["card"+x].setAttribute("id", myLibrary[x][y])
             
             }}
-            
-        
-        
-
+         
         this["card"+x].innerHTML += "<br>"
 
 // a delete button is added onto each card, and an eventListener is defined on each button
@@ -61,6 +43,15 @@ function displayBooks() {
         this["card"+x].appendChild(delButton)
         delButton.addEventListener('click', () => {
             deleteBook(this["card"+x])
+        })
+
+        const readToggle = document.createElement('button')
+        readToggle.textContent = "Change status"
+        this["card"+x].appendChild(readToggle)
+        readToggle.addEventListener('click',() => {
+            statusToggle(this["card"+x])
+            displayBooks()
+            
         })
         
        bookCards.appendChild(this["card"+x])
@@ -95,8 +86,19 @@ function addBookToLibrary() {
     
 }
 
+function statusToggle(e) {
+    const index = myLibrary.findIndex((Book) => {
+        return Book.name === e.id
+    });
+    if (myLibrary[index].status === "Read") {
+        myLibrary[index].status = "Unread"
+    }
 
-
+    else if (myLibrary[index].status === "Unread") {
+        myLibrary[index].status = "Read"
+    }
+    
+}
 
 const btn = document.querySelector("#submit")
 btn.addEventListener('click', function (e) {
