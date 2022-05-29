@@ -25,9 +25,13 @@ function displayBooks() {
         this["card"+x].classList.add("bookCard")
 // each card has an ID based on its index in the library array upon creation
 
-        this["card"+x].setAttribute("id",x)
+        
         for (let y in myLibrary[x]) {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+            if (y === "Name") {
+                this["card"+x].setAttribute("id",myLibrary[x][y])
+                
+            }
             
         
         }
@@ -43,31 +47,20 @@ function displayBooks() {
             deleteBook(this["card"+x])
         })
         
-        
-
-       // 
-      //  
-            
-// when the delete button is clicked the button removes the card div
-        
-
-        bookCards.appendChild(this["card"+x])
+       bookCards.appendChild(this["card"+x])
          
     }
 }
 
 
-        
-        
-        
-        
-        
-
-
 function deleteBook(e) {
     console.log(e)
     e.remove();
-    myLibrary.splice(e.id,1);
+    console.log(myLibrary);
+    const index = myLibrary.findIndex((Book) => {return Book.Name === e.id});
+    console.log(e.id)
+    console.log(index)
+    myLibrary.splice(index,1);
     console.log(myLibrary)
 }
 
