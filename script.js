@@ -1,8 +1,8 @@
 function Book(name,author,pages,status) {
-    this.Name = name;
-    this.Author = author;
-    this.Pages = pages;
-    this.Status = status;
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
    
 }
 
@@ -23,21 +23,21 @@ function displayBooks() {
     
         this["card"+x] = document.createElement('div')
         this["card"+x].classList.add("bookCard")
-// each card has an ID based on its index in the library array upon creation
-
         
         for (let y in myLibrary[x]) {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+// each card has an ID based on the book's name
             if (y === "Name") {
-                this["card"+x].setAttribute("id",myLibrary[x][y])
+                this["card"+x].setAttribute("id", myLibrary[x][y])
                 
             }
             
         
         }
+
         this["card"+x].innerHTML += "<br>"
 
-// a delete button is added onto each card, and an eventListener is defined
+// a delete button is added onto each card, and an eventListener is defined on each button
 
         const delButton = document.createElement('button')
         delButton.innerHTML = "Delete Book"
@@ -54,12 +54,13 @@ function displayBooks() {
 
 
 function deleteBook(e) {
-    console.log(e)
+    
     e.remove();
     console.log(myLibrary);
-    const index = myLibrary.findIndex((Book) => {return Book.Name === e.id});
-    console.log(e.id)
-    console.log(index)
+    const index = myLibrary.findIndex((Book) => {
+        return Book.name === e.id
+    });
+    
     myLibrary.splice(index,1);
     console.log(myLibrary)
 }
@@ -69,7 +70,7 @@ function addBookToLibrary() {
     let name = document.getElementById('name').value
     let author = document.getElementById('author').value
     let pages = document.getElementById('pages').value
-    let status = document.getElementById('status').value 
+    let status = document.querySelector('input[name="status"]:checked').value 
 
     let newBook = new Book(name,author,pages,status)
 
@@ -85,8 +86,9 @@ const btn = document.querySelector("#submit")
 btn.addEventListener('click', function (e) {
     addBookToLibrary();
     e.preventDefault();
+    
     displayBooks();
-
+    document.querySelector("form").reset();
   }) 
 
 const addBtn = document.querySelector("#addBook")

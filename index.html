@@ -16,13 +16,19 @@
 
     <form class = "form">
         <label for="name">Name</label>
-        <input type="text" id="name" name="Name">
+        <input type="text" id="name" name="name">
         <label for="author">Author</label>
-        <input type="text" id="author" name="Author">
+        <input type="text" id="author" name="author">
         <label for="pages">Pages</label>
-        <input type="number" id="pages" name="Pages">
-        <label for="status">Status</label>
-        <input type="text" id="status" name="Status">
+        <input type="number" id="pages" name="pages">
+        <fieldset>
+            <legend>Read? Or Unread</legend>
+            <label for="read">Read</label>
+            <input type="radio" id="read" name="status" value="1" checked>
+            <label for="unread">Unread</label>
+            <input type="radio" id="unread" name="status" value="0">
+        </fieldset>
+        
         <button id="submit" type="submit">Submit</button>
     </form>
 </body>
