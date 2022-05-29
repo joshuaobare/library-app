@@ -26,14 +26,30 @@ function displayBooks() {
         
         for (let y in myLibrary[x]) {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+          /*  if (y === "status") {
+                if (myLibrary[x][y] === "1" ) {
+                    myLibrary[x][y] = "Read"
+                    this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+                }
+
+                else {
+                    myLibrary[x][y] = "Unread"
+                    this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+                }
+            } */
+            
+                       
+            
+            
+            
 // each card has an ID based on the book's name
-            if (y === "Name") {
+            if (y === "name") {
                 this["card"+x].setAttribute("id", myLibrary[x][y])
-                
-            }
+            
+            }}
             
         
-        }
+        
 
         this["card"+x].innerHTML += "<br>"
 
