@@ -1,18 +1,21 @@
-function Book(name,author,pages,status) {
-    this.title = name;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-   
-}
-
-
-
 let myLibrary = []
 const bookShelf = document.querySelector("#book")
 const bookCards = document.createElement("div")
 bookCards.classList.add("bookCards")
 bookShelf.appendChild(bookCards)
+// dialog refers to the dialog element the form is enclosed in
+let dialog = document.querySelector("#dialog")
+
+
+
+function Book(name,author,pages,status) {
+    this.Title = name;
+    this.Author = author;
+    this.Pages = pages;
+    this.Status = status;
+   
+}
+
 
 function displayBooks() {
 // the section with the cards is cleared each time the function is run
@@ -28,7 +31,7 @@ function displayBooks() {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
           
 // each card has an ID based on the book's name
-            if (y === "title") {
+            if (y === "Title") {
                 this["card"+x].setAttribute("id", myLibrary[x][y])
             
             }}
@@ -65,12 +68,13 @@ function deleteBook(e) {
     e.remove();
     console.log(myLibrary);
     const index = myLibrary.findIndex((Book) => {
-        return Book.title === e.id
+        return Book.Title === e.id
     });
     
     myLibrary.splice(index,1);
     console.log(myLibrary)
 }
+
 
 function addBookToLibrary() {
 
@@ -83,22 +87,33 @@ function addBookToLibrary() {
 
     myLibrary.push(newBook)
     console.log(myLibrary)
-    
 }
 
 function statusToggle(e) {
     const index = myLibrary.findIndex((Book) => {
-        return Book.title === e.id
+        return Book.Title === e.id
     });
-    if (myLibrary[index].status === "Read") {
-        myLibrary[index].status = "Unread"
+    if (myLibrary[index].Status === "Read") {
+        myLibrary[index].Status = "Unread"
     }
 
-    else if (myLibrary[index].status === "Unread") {
-        myLibrary[index].status = "Read"
+    else if (myLibrary[index].Status === "Unread") {
+        myLibrary[index].Status = "Read"
     }
     
 }
+
+const addBtn = document.querySelector("#addBook")
+addBtn.addEventListener('click', () => {
+    const form =document.querySelector(".form")
+    form.classList.add("show")
+
+// addBtn opens the dialog
+    dialog.showModal()
+    
+    
+})
+
 
 const btn = document.querySelector("#submit")
 btn.addEventListener('click', function (e) {
@@ -107,11 +122,10 @@ btn.addEventListener('click', function (e) {
     
     displayBooks();
     document.querySelector("form").reset();
+
+// the submit button closes the dialog
+    dialog.close()
   }) 
 
-const addBtn = document.querySelector("#addBook")
-addBtn.addEventListener('click', () => {
-    const form =document.querySelector(".form")
-    form.classList.add("show")
-})
+
 
