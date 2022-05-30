@@ -1,5 +1,5 @@
 function Book(name,author,pages,status) {
-    this.name = name;
+    this.title = name;
     this.author = author;
     this.pages = pages;
     this.status = status;
@@ -28,7 +28,7 @@ function displayBooks() {
             this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
           
 // each card has an ID based on the book's name
-            if (y === "name") {
+            if (y === "title") {
                 this["card"+x].setAttribute("id", myLibrary[x][y])
             
             }}
@@ -65,7 +65,7 @@ function deleteBook(e) {
     e.remove();
     console.log(myLibrary);
     const index = myLibrary.findIndex((Book) => {
-        return Book.name === e.id
+        return Book.title === e.id
     });
     
     myLibrary.splice(index,1);
@@ -74,12 +74,12 @@ function deleteBook(e) {
 
 function addBookToLibrary() {
 
-    let name = document.getElementById('name').value
+    let title = document.getElementById('title').value
     let author = document.getElementById('author').value
     let pages = document.getElementById('pages').value
     let status = document.querySelector('input[name="status"]:checked').value 
 
-    let newBook = new Book(name,author,pages,status)
+    let newBook = new Book(title,author,pages,status)
 
     myLibrary.push(newBook)
     console.log(myLibrary)
@@ -88,7 +88,7 @@ function addBookToLibrary() {
 
 function statusToggle(e) {
     const index = myLibrary.findIndex((Book) => {
-        return Book.name === e.id
+        return Book.title === e.id
     });
     if (myLibrary[index].status === "Read") {
         myLibrary[index].status = "Unread"
@@ -112,6 +112,6 @@ btn.addEventListener('click', function (e) {
 const addBtn = document.querySelector("#addBook")
 addBtn.addEventListener('click', () => {
     const form =document.querySelector(".form")
-    form.style.display = "block"
+    form.classList.add("show")
 })
 

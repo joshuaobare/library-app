@@ -1,6 +1,4 @@
-.show {
-    display:block;
-}
+
 
 .form {
     display: none;
@@ -22,4 +20,16 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap:50px;
+}
+
+.show {
+    display: flex; 
+    gap:20px;
+    flex-direction: column;
+    width: 200px;
+    padding:20px;
+}
+
+#submit {
+    align-self: flex-start;
 }
