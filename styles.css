@@ -1,4 +1,7 @@
-
+body {
+    font-family: monospace;
+    color: #D92121;
+}
 
 .form {
     display: none;
@@ -28,8 +31,27 @@ h1 {
     flex-direction: column;
     width: 200px;
     padding:20px;
+    color: #D92121;
 }
 
 #submit {
     align-self: flex-start;
 }
+
+legend {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.form-legend {
+    font-size: 20px;
+}
+
+.status-legend {
+    color: black;
+}
+
+dialog::backdrop {
+    background: #D92121;
+    opacity:10%;
+  }
