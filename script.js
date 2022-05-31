@@ -102,6 +102,10 @@ function addBookToLibrary() {
 
     let newBook = new Book(title,author,pages,status)
 
+    if ((title === "")|| (author === "")||(pages === "")||(status === "")) {
+        return addBookToLibrary()
+    }
+
     myLibrary.push(newBook)
     console.log(myLibrary)
 }
