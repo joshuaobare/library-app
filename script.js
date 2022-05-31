@@ -30,7 +30,7 @@ function displayBooks() {
         cardText.classList.add('cardText')
 
         for (let y in myLibrary[x]) {
-            cardText.innerHTML += `<span style="color: black;font-size:1.1em;">${y}</span>`+":" + "  " + myLibrary[x][y] + " " + "<br><br>"
+            cardText.innerHTML += `<span style="color: black;font-size:1.1em;">${y}:</span>` + "  " + myLibrary[x][y] + " " + "<br><br>"
           
 // each card has an ID based on the book's name
             if (y === "Title") {
@@ -58,10 +58,11 @@ function displayBooks() {
         delCont.appendChild(delButton)
         delButton.addEventListener('click', () => {
             deleteBook(cardText)
+            this["card"+x].remove()
         })
 
         const readToggle = document.createElement('button')
-        readToggle.textContent = "Change status"
+        readToggle.textContent = "Read Status"
         statCont.appendChild(readToggle)
         btnCont.appendChild(delCont)
         btnCont.appendChild(statCont)
@@ -80,9 +81,8 @@ function displayBooks() {
 }
 
 
-function deleteBook(e) {
-    
-    e.remove();
+function deleteBook(e) {    
+   
     console.log(myLibrary);
     const index = myLibrary.findIndex((Book) => {
         return Book.Title === e.id
