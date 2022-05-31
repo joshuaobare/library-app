@@ -12,10 +12,13 @@ h1 {
 }
 
 .bookCard {
-    background-color: black;
-    color:wheat;
-    width:200px;
-    height: 200px;
+    border: 2px solid black;
+    color:#D92121;
+    width:300px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1em;
 }
 
 .bookCards {
@@ -51,7 +54,7 @@ legend {
     color: black;
 }
 
-dialog::backdrop {
-    background: #D92121;
-    opacity:10%;
-  }
+button , #submit {
+    color:white;
+    background-color: black;
+}

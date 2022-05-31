@@ -28,7 +28,7 @@ function displayBooks() {
         this["card"+x].classList.add("bookCard")
         
         for (let y in myLibrary[x]) {
-            this["card"+x].innerHTML += y +":" + " " + myLibrary[x][y] + " " + "<br>"
+            this["card"+x].innerHTML += `<span style="color: black;font-size:1.1em;">${y}</span>`+":" + "  " + myLibrary[x][y] + " " + "<br><br>"
           
 // each card has an ID based on the book's name
             if (y === "Title") {
@@ -43,14 +43,26 @@ function displayBooks() {
         const delButton = document.createElement('button')
         delButton.innerHTML = "Delete Book"
         delButton.classList.add("delButton")
-        this["card"+x].appendChild(delButton)
+        const btnCont = document.createElement('div')
+        btnCont.classList.add('btnCont')
+        const delCont = document.createElement('div')
+        delCont.classList.add('delCont')
+        const statCont = document.createElement('div')
+        statCont.classList.add('statCont')
+
+        
+
+        delCont.appendChild(delButton)
         delButton.addEventListener('click', () => {
             deleteBook(this["card"+x])
         })
 
         const readToggle = document.createElement('button')
         readToggle.textContent = "Change status"
-        this["card"+x].appendChild(readToggle)
+        statCont.appendChild(readToggle)
+        btnCont.appendChild(delCont)
+        btnCont.appendChild(statCont)
+        this["card"+x].appendChild(btnCont)
         readToggle.addEventListener('click',() => {
             statusToggle(this["card"+x])
             displayBooks()
