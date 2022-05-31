@@ -58,3 +58,9 @@ button , #submit {
     color:white;
     background-color: black;
 }
+
+.btnCont {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
